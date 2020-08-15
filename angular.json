@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "LSN-Interview"
+    }
+  },
+  "defaultProject": "LSN-Interview",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

@@ -1,6 +1,6 @@
-import { UserRoles } from './../constants/userRoles';
+import { UserRoles } from '../constants/userRoles';
 
-export interface UserInterface {
+export interface UserData {
   username: string;
   firstName: string;
   lastName: string;
