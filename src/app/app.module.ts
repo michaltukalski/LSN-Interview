@@ -36,7 +36,6 @@ export class AppModule { }
 
 export function appInit(store: Store) {
   return () => {
-    console.log('DISPATCH START APP');
     store.dispatch(AppFlowActions.StartApp());
   };
 }

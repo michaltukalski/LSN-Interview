@@ -6,6 +6,9 @@ import { UsersTableComponent } from './components-smart/users-table/users-table.
 import { UsersScreenComponent } from './components-smart/users-screen/users-screen.component';
 import { UsersTableScreenComponent } from './components-dumb/users-table-screen/users-table-screen.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatSortModule  } from '@angular/material/sort';
 
 
 
@@ -17,6 +20,9 @@ import { MatTableModule } from '@angular/material/table';
     SharedModule,
     RootStoreModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSortModule
   ]
 })
 export class CoreModule { }

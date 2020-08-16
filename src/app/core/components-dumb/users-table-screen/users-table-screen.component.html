@@ -1,33 +1,61 @@
-<mat-table class='usersTable mat-elevation-z8' [dataSource]='usersData'>
+<div class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-label>Filter </mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Type..." #input>
+  </mat-form-field>
 
-  <ng-container matColumnDef="position">
-    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-    <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
-  </ng-container>
+  <mat-table class='usersTable mat-elevation-z8' matSort [dataSource]='this.dataSource'>
 
-  <ng-container matColumnDef="username">
-    <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="firstname">
-    <mat-header-cell *matHeaderCellDef> Firstname </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="lastname">
-    <mat-header-cell *matHeaderCellDef> Lastname </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="firstname">
+      <mat-header-cell *matHeaderCellDef> Firstname </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="role">
-    <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.role}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="lastname">
+      <mat-header-cell *matHeaderCellDef> Lastname </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+    </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <ng-container matColumnDef="role">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Role </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.role}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button [disabled]="!element.enabled" (click)="this.deleteSelected(element)">
+          <i class="icon-trash icon-large"></i> Delete
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="modify">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button [disabled]="!element.enabled" (click)="this.modifySelected(element)">
+          <i class="icon-fixed-width icon-pencil"></i> Modify
+        </button>
+      </mat-cell>
+    </ng-container>
 
 
-</mat-table>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[4, 8, 12]" showFirstLastButtons></mat-paginator>
+</div>
 

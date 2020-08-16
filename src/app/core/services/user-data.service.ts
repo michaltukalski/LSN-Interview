@@ -24,8 +24,8 @@ export class UserDataService {
         username,
         firstName: this.firstnames[i],
         lastName: this.lastnames[i],
-        role: UserRoles.User,
-        enabled: Boolean(Math.round(Math.random()))
+        role: i === 0 ? UserRoles.Admin : UserRoles.User,
+        enabled: i !== 0
       };
     });
 

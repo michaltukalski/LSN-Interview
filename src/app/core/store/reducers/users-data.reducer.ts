@@ -1,3 +1,4 @@
+import { UserActivityActions } from '@app/core/store/actions';
 import { createReducer, on, Action } from '@ngrx/store';
 import { UserData } from '../../interfaces/userData';
 import { UsersDataActions } from '../actions';
@@ -19,6 +20,11 @@ export const usersDataReducer = createReducer(
     ...state,
     users
 
+  })),
+
+  on(UserActivityActions.DeleteUserConfirmed, (state, {user}) => ({
+    ...state,
+    users: Object.values(state.users).filter(tempUser => tempUser.username !== user.username)
   })),
 );
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UsersDataSelectors } from '../../store/selectors';
+import { UserData } from '@app/core/interfaces/userData';
+import { UserActivityActions } from '@app/core/store/actions';
 
 @Component({
   selector: 'app-users-table',
@@ -14,7 +16,10 @@ export class UsersTableComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    console.log("BBBBBB", this.usersData$)
+  }
+
+  deleteUser(user: UserData){
+    this.store.dispatch(UserActivityActions.DeleteUser({user}));
   }
 
 }
