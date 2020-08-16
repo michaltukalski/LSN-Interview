@@ -1,14 +1,17 @@
+import { StartApp } from './core/store/actions/appFlow.actions';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { AppFlowActions } from './core/store/actions';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,11 +22,21 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{
+    provide: APP_INITIALIZER,
+    useFactory: appInit,
+    multi: true,
+    deps: [Store]
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function appInit(store: Store) {
+  return () => {
+    console.log('DISPATCH START APP');
+    store.dispatch(AppFlowActions.StartApp());
+  };
+}
