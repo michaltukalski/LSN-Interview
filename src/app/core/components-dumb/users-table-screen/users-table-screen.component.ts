@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-users-table-screen',
   templateUrl: './users-table-screen.component.html',
-  styleUrls: ['./users-table-screen.component.sass']
+  styleUrls: ['./users-table-screen.component.scss']
 })
 export class UsersTableScreenComponent implements OnInit, OnDestroy {
 
@@ -19,7 +19,7 @@ export class UsersTableScreenComponent implements OnInit, OnDestroy {
   @Output() deleteUser = new EventEmitter<UserData>();
   @Output() modifyUser = new EventEmitter<UserData>();
 
-  dataSource; // = new MatTableDataSource<UserData>(this.usersData.subscribe(()=> console.log("ddd")));
+  dataSource;
   displayedColumns: string[] = ['username', 'firstname', 'lastname', 'role', 'delete', 'modify'];
   private dataSubscription: Subscription;
 

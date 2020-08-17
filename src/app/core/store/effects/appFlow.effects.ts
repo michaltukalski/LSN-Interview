@@ -13,7 +13,6 @@ export class AppFlowEffects {
   startApp$ = createEffect(() =>
     this.actions$.pipe(
     ofType(AppFlowActions.StartApp),
-    tap(() => console.log('FLOW EFFECT - Start')),
     map(() => UsersDataActions.LoadRequested())
   ));
 }

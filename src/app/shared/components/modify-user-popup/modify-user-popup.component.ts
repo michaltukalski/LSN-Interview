@@ -9,7 +9,7 @@ import { UserRoles } from '@app/core/constants/userRoles';
 @Component({
   selector: 'app-modify-user-popup',
   templateUrl: './modify-user-popup.component.html',
-  styleUrls: ['./modify-user-popup.component.sass']
+  styleUrls: ['./modify-user-popup.component.scss']
 })
 export class ModifyUserPopupComponent implements OnInit {
 

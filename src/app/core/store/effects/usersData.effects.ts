@@ -14,7 +14,6 @@ export class UsersDataEffects {
   loadUsersData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UsersDataActions.LoadRequested),
-      // tap(() => console.log('DATA REQUESTED')),
       exhaustMap(() => {
         return this.service.loadData().pipe(
           map(users => UsersDataActions.LoadSuccess({users}))
@@ -25,6 +24,5 @@ export class UsersDataEffects {
   usersDataLoaded$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UsersDataActions.LoadSuccess),
-      tap((data) => console.log(data))
     ), {dispatch: false});
 }

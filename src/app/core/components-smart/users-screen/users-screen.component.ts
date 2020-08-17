@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-users-screen',
   templateUrl: './users-screen.component.html',
-  styleUrls: ['./users-screen.component.sass']
+  styleUrls: ['./users-screen.component.scss']
 })
 export class UsersScreenComponent implements OnInit {
 
