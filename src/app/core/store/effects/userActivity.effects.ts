@@ -1,3 +1,4 @@
+import { ModifyUserPopupComponent } from './../../../shared/components/modify-user-popup/modify-user-popup.component';
 import { DeleteUserPopupComponent } from './../../../shared/components/delete-user-popup/delete-user-popup.component';
 import { tap, map} from 'rxjs/operators';
 import { UserActivityActions } from '../actions';
@@ -21,6 +22,20 @@ export class UserActivityEffects {
   map((user) => {
     const dialogRef = this.dialog.open(DeleteUserPopupComponent, {
       id: 'delete-popup',
+      height: 'auto',
+      width: '600px',
+      panelClass: 'delete-popup',
+      data: user
+    });
+  })
+  ), {dispatch: false});
+
+  modifyUser$ = createEffect(() =>
+  this.actions$.pipe(
+  ofType(UserActivityActions.ModifyUser),
+  map((user) => {
+    const dialogRef = this.dialog.open(ModifyUserPopupComponent, {
+      id: 'modify-popup',
       height: 'auto',
       width: '600px',
       panelClass: 'delete-popup',

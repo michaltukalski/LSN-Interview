@@ -22,4 +22,8 @@ export class UsersTableComponent implements OnInit {
     this.store.dispatch(UserActivityActions.DeleteUser({user}));
   }
 
+  modifyUser(user: UserData){
+    this.store.dispatch(UserActivityActions.ModifyUser({user}));
+  }
+
 }

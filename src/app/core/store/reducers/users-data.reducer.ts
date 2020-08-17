@@ -5,7 +5,7 @@ import { UsersDataActions } from '../actions';
 
 
 export interface UsersDataState {
-  users: { [key: number]: UserData };
+  users: UserData[];
 }
 
 export const initialState: UsersDataState = {
@@ -26,6 +26,18 @@ export const usersDataReducer = createReducer(
     ...state,
     users: Object.values(state.users).filter(tempUser => tempUser.username !== user.username)
   })),
+
+  on(UserActivityActions.ModifyUserConfirmed, (state, {user, modUser}) => ({
+    ...state,
+    users: Object.values(state.users).map(val =>
+      val.username === user.username ? modUser : val
+    )
+  })),
+
+  on(UserActivityActions.AddUserConfirmed, (state, {user}) => ({
+    ...state,
+    users: [...state.users, user]
+  }))
 );
 
 export function reducer(state: UsersDataState | undefined, action: Action) {

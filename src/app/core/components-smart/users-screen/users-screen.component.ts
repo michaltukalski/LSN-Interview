@@ -1,4 +1,8 @@
+import { UserActivityActions } from '@app/core/store/actions';
+import { UserData } from './../../interfaces/userData';
 import { Component, OnInit } from '@angular/core';
+import { UserRoles } from '@app/core/constants/userRoles';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-users-screen',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersScreenComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
+  }
+
+  newUser(){
+    const newUser: UserData = {
+      enabled: true,
+      firstName: '',
+      lastName: '',
+      username: '',
+      role: UserRoles.User
+    };
+    this.store.dispatch(UserActivityActions.ModifyUser({user: newUser}));
   }
 
 }
