@@ -4,11 +4,12 @@ import { DeleteUserPopupComponent } from './components/delete-user-popup/delete-
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModifyUserPopupComponent } from './components/modify-user-popup/modify-user-popup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorPopupComponent } from './components/error-popup/error-popup.component';
 
 
 
 @NgModule({
-  declarations: [DeleteUserPopupComponent, ModifyUserPopupComponent],
+  declarations: [DeleteUserPopupComponent, ModifyUserPopupComponent, ErrorPopupComponent],
   imports: [
     CommonModule,
     MatDialogModule,
