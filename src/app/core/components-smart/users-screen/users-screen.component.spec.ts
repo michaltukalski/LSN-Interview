@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsersScreenComponent } from './users-screen.component';
+import { Store, StoreModule } from '@ngrx/store';
 
 describe('UsersScreenComponent', () => {
   let component: UsersScreenComponent;
@@ -8,7 +9,9 @@ describe('UsersScreenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsersScreenComponent ]
+      imports: [StoreModule.forRoot({})],
+      declarations: [ UsersScreenComponent ],
+      providers: [Store],
     })
     .compileComponents();
   }));
