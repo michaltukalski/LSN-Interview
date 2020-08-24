@@ -21,7 +21,6 @@ export class CustomErrorHandler extends ErrorHandler {
       width: '600px',
       panelClass: 'error-popup',
       disableClose: true,
-      data: {hash: error.hash}
     });
   }
 }

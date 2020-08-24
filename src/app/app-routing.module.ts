@@ -15,6 +15,10 @@ const routes: Routes = [
     component: UsersScreenComponent
     // canActivate: [RootGuard],
     // loadChildren: () => import(`./core/core.module`).then(m => m.CoreModule),
+  },
+  {
+    path: '**',
+    redirectTo: PathConstantSegments.Users
   }
 ];
 
