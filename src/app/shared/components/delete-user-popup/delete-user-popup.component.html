@@ -2,7 +2,7 @@
   <p>You are going to delete {{user.username}}?</p>
   <p>Are you sure?</p>
   <div>
-    <button (click)='this.deleteConfirmed()' mat-button [mat-dialog-close]="true">Yes!</button>
-    <button mat-button [mat-dialog-close]="true">No!</button>
+    <button id='yesButton' (click)='this.deleteConfirmed()' mat-button [mat-dialog-close]="true">Yes!</button>
+    <button id='noButton' mat-button [mat-dialog-close]="true">No!</button>
   </div>
 </div>

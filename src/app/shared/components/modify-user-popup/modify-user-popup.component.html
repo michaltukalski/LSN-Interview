@@ -1,5 +1,5 @@
 <div class="form-container">
-  <form [formGroup]="angForm" novalidate>
+  <form [formGroup]="angForm">
         <div class="form-group">
           <label class="center-block">Username:
             <input class="form-control" formControlName="username">
@@ -33,8 +33,8 @@
 
   </form>
   <div>
-    <button *ngIf='angForm.status === "VALID"' (click)='this.modifiedConfirmed(angForm.value)' mat-button [mat-dialog-close]="true">Submit</button>
-    <button mat-button [mat-dialog-close]="true">Cancel</button>
+    <button id='submitButton' *ngIf='angForm.status === "VALID"' (click)='this.modifiedConfirmed(angForm.value)' mat-button [mat-dialog-close]="true">Submit</button>
+    <button id='cancelButton' mat-button [mat-dialog-close]="true">Cancel</button>
   </div>
 <!-- <p>Form value: {{ angForm.value | json }}</p>
 <p>Form status: {{ angForm.status }}</p> -->

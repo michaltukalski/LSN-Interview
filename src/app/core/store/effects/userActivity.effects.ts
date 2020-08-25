@@ -38,7 +38,7 @@ export class UserActivityEffects {
       id: 'modify-popup',
       height: 'auto',
       width: '600px',
-      panelClass: 'delete-popup',
+      panelClass: 'modify-popup',
       data: user
     });
   })
